@@ -10,16 +10,13 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist';
-import rootReducer from './slices/Root.reducer'
+import rootReducer from './slices/root.reducer'
 
 export const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
     whitelist: ['token', 'avatar', 'user', 'order'],
 };
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const createDebugger = require('redux-flipper').default;
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
@@ -40,7 +37,7 @@ const createStore = () => {
                         REGISTER,
                     ],
                 },
-            }).concat(createDebugger()),
+            }),
         ],
     });
 
